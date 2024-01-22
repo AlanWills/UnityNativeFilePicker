@@ -65,10 +65,10 @@ namespace NativeFilePickerNamespace
 			return instance;
 		}
 
-		public static TypeHolder[] GetCustomTypes()
+		public static IReadOnlyList<TypeHolder> GetCustomTypes()
 		{
 			NativeFilePickerCustomTypes instance = GetInstance( false );
-			return instance ? instance.customTypes : null;
+			return instance ? instance.customTypes : new List<TypeHolder>();
 		}
 	}
 }
