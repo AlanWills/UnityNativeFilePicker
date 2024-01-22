@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using UnityEditor;
 using UnityEngine;
+using System.Collections.Generic;
 
 namespace NativeFilePickerNamespace
 {
@@ -26,8 +27,16 @@ namespace NativeFilePickerNamespace
 
 #pragma warning disable 0649
 		[SerializeField]
-		private TypeHolder[] customTypes;
+		private List<TypeHolder> customTypes = new List<TypeHolder>();
 #pragma warning restore 0649
+
+		public void AddCustomType(TypeHolder typeHolder)
+		{
+			customTypes.Add(typeHolder);
+#if UNITY_EDITOR
+			UnityEditor.EditorUtility.SetDirty(this);
+#endif
+		}
 
 		[MenuItem( "Window/NativeFilePicker Custom Types" )]
 		private static void InspectCustomTypes()
