@@ -35,7 +35,7 @@ namespace NativeFilePickerNamespace
 			Selection.activeObject = GetInstance( true );
 		}
 
-		private static NativeFilePickerCustomTypes GetInstance( bool createIfNotExists )
+		public static NativeFilePickerCustomTypes GetInstance( bool createIfNotExists )
 		{
 			NativeFilePickerCustomTypes instance = null;
 			string[] instances = AssetDatabase.FindAssets( "t:NativeFilePickerCustomTypes" );
