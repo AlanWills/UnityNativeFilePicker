@@ -79,7 +79,7 @@ namespace NativeFilePickerNamespace
 			// Add declared custom types to Info.plist
 			if( target == BuildTarget.iOS )
 			{
-				IReadOnlyList<TypeHolder> customTypes = NativeFilePickerCustomTypes.GetCustomTypes();
+				IReadOnlyList<NativeFilePickerCustomTypes.TypeHolder> customTypes = NativeFilePickerCustomTypes.GetCustomTypes();
 				if( customTypes != null )
 				{
 					string plistPath = Path.Combine( buildPath, "Info.plist" );
