@@ -22,7 +22,7 @@ namespace CelesteEditor.BuildSystem.iOSPostProcess
 				string targetGuid = proj.TargetGuidByName("Unity-iPhone");
 #endif
 
-                proj.AddFrameworkToProject(targetGuid, "UniformTypeIdentifiers.framework", false);
+                proj.AddFrameworkToProject(targetGuid, "UniformTypeIdentifiers.framework", true);
                 proj.AddFrameworkToProject(targetGuid, "CoreServices.framework", false);
                 proj.AddFrameworkToProject(targetGuid, "MobileCoreServices.framework", true);
 
