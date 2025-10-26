@@ -78,12 +78,15 @@ static int filePickerState = 0; // 0 -> none, 1 -> showing, 2 -> finished
 
 + (char *)convertExtensionToUTI:(NSString *)extension
 {
-    // iOS 14+ only – use UniformTypeIdentifiers
-    UTType *type = [UTType typeWithFilenameExtension:extension.lowercaseString];
-    if (type != nil)
-        return [self getCString:type.identifier];
-    else
-        return [self getCString:@"public.data"]; // fallback generic type
+    if (@available(iOS 14.0, *))
+    {
+        UTType *type = [UTType typeWithFilenameExtension:extension.lowercaseString];
+        if (type != nil)
+            return [self getCString:type.identifier];
+    }
+
+    // Fallback path (never hit on iOS 14+ but satisfies compiler)
+    return [self getCString:@"public.data"];
 }
 
 // Called when a single file was picked (iOS < 11 fallback not needed)
